@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayne Industries Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #10141a;
+            color: #b8eaff;
+            min-height: 100vh;
+        }
+        .dashboard-container {
+            display: grid;
+            grid-template-areas:
+                "logo logo logo"
+                "status map tech"
+                "profile map city"
+                "profile chart city";
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 80px 220px 180px 180px;
+            gap: 24px;
+            padding: 40px 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo-panel {
+            grid-area: logo;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            letter-spacing: 6px;
+            color: #00fff7;
+            border-bottom: 1px solid #22303a;
+            padding-bottom: 12px;
+        }
+        .status-panel, .profile-panel, .tech-panel, .city-panel, .chart-panel {
+            background: rgba(20, 30, 40, 0.85);
+            border: 1.5px solid #00fff7;
+            border-radius: 18px;
+            box-shadow: 0 0 24px #00fff733;
+            padding: 18px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .status-panel { grid-area: status; }
+        .profile-panel { grid-area: profile; }
+        .tech-panel { grid-area: tech; }
+        .city-panel { grid-area: city; }
+        .chart-panel { grid-area: chart; }
+        .map-panel {
+            grid-area: map;
+            background: rgba(10, 20, 30, 0.95);
+            border: 2px solid #00fff7;
+            border-radius: 22px;
+            box-shadow: 0 0 32px #00fff744;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .panel-title {
+            font-size: 1.1rem;
+            color: #00fff7;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        .status-bar {
+            background: #22303a;
+            border-radius: 8px;
+            height: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .status-bar-fill {
+            background: linear-gradient(90deg, #00fff7 0%, #008cff 100%);
+            height: 100%;
+        }
+        .mini-chart, .mini-map, .mini-tech, .mini-city, .mini-profile {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(90deg, #00fff7 0%, #008cff 100%);
+            opacity: 0.08;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .map-visual {
+            width: 95%;
+            height: 180px;
+            background: radial-gradient(circle at 60% 40%, #00fff7 10%, transparent 70%);
+            border-radius: 18px;
+            opacity: 0.13;
+        }
+        .tech-img, .city-img {
+            width: 100%;
+            height: 90px;
+            background: linear-gradient(90deg, #00fff7 0%, #008cff 100%);
+            opacity: 0.10;
+            border-radius: 8px;
+        }
+        .logo-panel i {
+            font-size: 3.5rem;
+            margin-right: 18px;
+            color: #00fff7;
+            filter: drop-shadow(0 0 8px #00fff7);
+        }
+        /* Neon border animation */
+        .dashboard-container > div {
+            box-shadow: 0 0 8px #00fff7, 0 0 24px #00fff733 inset;
+        }
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .dashboard-container {
+                grid-template-areas:
+                    "logo"
+                    "status"
+                    "map"
+                    "tech"
+                    "profile"
+                    "chart"
+                    "city";
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(7, auto);
+                gap: 18px;
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="logo-panel">
+            <i class="ri-shield-star-line"></i>
+            WAYNE INDUSTRIES
+        </div>
+        <div class="status-panel">
+            <div class="panel-title">SIS STATUS</div>
+            <div>Status 1<div class="status-bar"><div class="status-bar-fill" style="width: 80%"></div></div></div>
+            <div>Status 2<div class="status-bar"><div class="status-bar-fill" style="width: 60%"></div></div></div>
+            <div>Status 3<div class="status-bar"><div class="status-bar-fill" style="width: 95%"></div></div></div>
+            <div>Status 4<div class="status-bar"><div class="status-bar-fill" style="width: 40%"></div></div></div>
+        </div>
+        <div class="profile-panel">
+            <div class="panel-title">PERFIL</div>
+            <div class="mini-profile"></div>
+        </div>
+        <div class="map-panel">
+            <div class="map-visual"></div>
+            <!-- Aqui você pode inserir um SVG de mapa futurista ou um gráfico JS -->
+        </div>
+        <div class="tech-panel">
+            <div class="panel-title">WAYNE TECH</div>
+            <div class="tech-img"></div>
+        </div>
+        <div class="city-panel">
+            <div class="panel-title">GOTHAM CITY</div>
+            <div class="city-img"></div>
+        </div>
+        <div class="chart-panel">
+            <div class="panel-title">ANÁLISE</div>
+            <div class="mini-chart"></div>
+        </div>
+    </div>
+</body>
+</html>
