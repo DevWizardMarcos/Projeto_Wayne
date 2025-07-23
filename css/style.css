@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap');
+
+
+:root{
+ --primary-color: #1a1a1a;
+ --secudanry-color: #f2f2f2;
+}
+
+
+body{
+    font-family: 'lato', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--secudanry-color);
+    background-image: url('assets/img');
+
+}
+
+
+#lg{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+
+
+form{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secudanry-color);
+    border-radius: 10px;
+    color: red;
+}
+
+

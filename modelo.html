@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login </title>
+</head>
+<body style="background-color: #181818; color: #f5f5f5; font-family: 'Segoe UI', Arial, sans-serif;">
+    <div style="max-width: 400px; margin: 60px auto; background: #232323; border-radius: 12px; box-shadow: 0 0 20px #000; padding: 32px; text-align: center;">
+        <h1 style="margin-bottom: 16px; font-size: 2em; letter-spacing: 2px;">Acesso à Batcaverna</h1>
+        <p style="margin-bottom: 24px; font-style: italic;">Somente para os maiores detetives de Gotham</p>
+        <form id="bat-login">
+            <input type="text" placeholder="Usuário" name="username" required style="width: 100%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none; background: #181818; color: #f5f5f5;">
+            <input type="password" placeholder="Senha" name="password" required style="width: 100%; padding: 10px; margin-bottom: 12px; border-radius: 6px; border: none; background: #181818; color: #f5f5f5;">
+            <label style="display: block; margin-bottom: 8px; text-align: left;">Enigma: Qual é o animal que voa à noite e protege Gotham?</label>
+            <input type="text" placeholder="Resposta ao enigma" name="riddle" required style="width: 100%; padding: 10px; margin-bottom: 18px; border-radius: 6px; border: none; background: #181818; color: #f5f5f5;">
+            <button type="submit" style="width: 100%; padding: 12px; background: #222; color: #ffe600; border: none; border-radius: 6px; font-weight: bold; font-size: 1em; cursor: pointer;">Entrar</button>
+        </form>
+        <div id="bat-message" style="margin-top: 18px; color: #ffe600;"></div>
+    </div>
+    <script src="js/batlogin.js"></script>
+</body>
+</html>
