@@ -23,8 +23,8 @@ header{
     background-color: var(--primary-color);
     margin: 2px;
     box-shadow:
-        inset 0 2px 8px #000a12,      /* sombra interna escura em cima */
-        inset 0 -2px 8px #23313a;     /* sombra interna clara embaixo */
+        inset 0 2px 8px #000a12, 
+        inset 0 -2px 8px #23313a;    
 }
 
 nav{
