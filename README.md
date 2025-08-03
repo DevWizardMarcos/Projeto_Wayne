@@ -63,7 +63,7 @@
 - [ ] Modo escuro/claro
 - [ ] Animações de entrada da página
 - [ ] Integração com APIs do universo DC
-<!-- (Resposta: Arkham / Wayne) -->
+<!-- (Resposta: Arkham/Wayne) -->
 
 ## 🔧 Estrutura do Projeto
 ```
@@ -82,3 +82,6 @@ Projeto_Wayne/
 
 ---
 *"I am vengeance, I am the night, I am Batman!"* 🦇
+vamos fazer o seguinte o email é BruceThomas@Wayne.com
+senha Jsontoddy
+enigma=Arkham / Wayne
