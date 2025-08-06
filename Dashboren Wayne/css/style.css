@@ -149,9 +149,124 @@ header img {
 .wayne-tech {
     grid-column: 3;
     grid-row: 1;
+    background: linear-gradient(135deg, var(--secundary-color) 70%, #444 100%);
+    border: 2px solid var(--panel-border);
+    border-radius: 15px;
+    box-shadow: 0 0 24px rgba(176, 176, 176, 0.15);
 }
 
-/* GOTHAM CITY Panel */
+.tech-display {
+    margin-top: 10px;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.tech-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--panel-border);
+    font-size: 10px;
+    color: var(--text-light);
+    background: rgba(224, 224, 224, 0.07);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    background-image: url(../assets/img/Batmovel-background.PNG);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#batmovel-gallery {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#batmovel-img {
+    max-width: 80%;
+    max-height: 280px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #0002;
+    object-fit: contain;
+}
+
+
+@keyframes girar360{
+    from{transform:rotateY(0deg);}
+    to{transform:rotateY(360deg);}
+}
+
+.girar{
+    animation: girar360 6s linear infinite;
+}
+
+
+.status-ok {
+    color: var(--neon-cyan);
+    font-weight: bold;
+    background: rgba(176, 176, 176, 0.15);
+    padding: 2px 10px;
+    border-radius: 8px;
+}
+
+.status-active {
+    color: #7fffd4;
+    font-weight: bold;
+    background: rgba(255, 215, 0, 0.12);
+    padding: 2px 10px;
+    border-radius: 8px;
+}
+
+.projects {
+    margin-bottom: 20px;
+}
+
+.projects h3 {
+    font-size: 14px;
+    color: var(--neon-cyan);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.projects ul {
+    list-style: disc inside;
+    margin-left: 10px;
+    color: var(--text-light);
+    font-size: 14px;
+    background: rgba(224, 224, 224, 0.05);
+    border-radius: 6px;
+    padding: 6px 0;
+}
+
+.stats {
+    background: rgba(224, 224, 224, 0.13);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-accent);
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(176,176,176,0.08);
+}
+
+.stats strong {
+    color: var(--neon-cyan);
+}
+
 .gotham-city {
     grid-column: 3;
     grid-row: 2;
