@@ -4,20 +4,29 @@
     box-sizing: border-box;
 }
 
-:root{
-    --primary-color: #1a1a1a;
-    --secundary-color: #2d2d2d;
-    --neon-cyan: #b0b0b0;
-    --neon-blue: #808080;
-    --dark-bg: #0f0f0f;
-    --panel-border: #404040;
-    --text-light: #e0e0e0;
-    --text-accent: #ffffff;
+:root {
+    --primary-color: #181a1b;       
+    --secundary-color: #23272a;       
+    --neon-cyan: #6ec6ca;            
+    --neon-blue: #2b3a4b;             
+    --dark-bg: #101214;               
+    --panel-border: #31343a;          
+    --text-light: #e0e0e0;            
+    --text-accent: #ffd700;          
+    --text-warning: #bfa14a;          
+    --text-success: #3fa17f;          
+    --text-danger: #a83232;        
+    --shadow-main: 0 0 20px rgba(0, 0, 0, 0.7);
+    --shadow-inset-light: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-inset-dark: inset 0 -2px 8px rgba(49, 52, 58, 0.2);
+    --shadow-box: 0 2px 8px #0004;
+    --border-radius-main: 15px;
+    --border-radius-img: 8px;
+    --font-main: 'Courier New', monospace;
 }
-
 body{
     background-color: var(--dark-bg);
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-main);
     color: var(--text-light);
     overflow-x: hidden;
     background-image: url(../assets/img/fundo.png);
@@ -61,13 +70,10 @@ header img {
 
 .panel {
     background-color: rgba(26, 26, 26, 0.8);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow-main), var(--shadow-inset-light), var(--shadow-inset-dark);
     border: 2px solid var(--panel-border);
-    border-radius: 15px;
     padding: 20px;
-    box-shadow: 
-        0 0 20px rgba(0, 0, 0, 0.5),
-        inset 0 2px 8px rgba(0, 0, 0, 0.3),
-        inset 0 -2px 8px rgba(64, 64, 64, 0.2);
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(5px);
@@ -210,10 +216,26 @@ header img {
     to{transform:rotateY(360deg);}
 }
 
-.girar{
+@keyframes girarEntrada {
+    from {
+        transform: rotateY(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animação principal para rotação contínua */
+.girar {
     animation: girar360 6s linear infinite;
 }
 
+/* Animação de entrada quando troca de imagem */
+.girar-entrada {
+    animation: girarEntrada 0.5s ease-in-out forwards;
+}
 
 .status-ok {
     color: var(--neon-cyan);
@@ -320,20 +342,491 @@ header img {
     border-radius: 12px;
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-    .dashboard-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        height: auto;
+/* Estilos para o CRUD do Batmóvel - VERSÃO MELHORADA */
+.batmovel-carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    min-height: 600px;
+    position: relative;
+}
+
+.batmovel-display {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.batmovel-display img {
+    max-height: 500px;
+    max-width: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    transform-origin: center center;
+    /* Efeitos visuais melhorados */
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+    border-radius: 10px;
+}
+
+/* Efeito de plataforma circular melhorado */
+.batmovel-display::before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 30px;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+/* Melhorar a aparência da plataforma */
+.batmovel-display::after {
+    content: '';
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    height: 12px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(176, 176, 176, 0.3) 20%, 
+        rgba(176, 176, 176, 0.6) 50%, 
+        rgba(176, 176, 176, 0.3) 80%, 
+        transparent 100%);
+    border-radius: 50%;
+    z-index: -2;
+    box-shadow: 0 0 30px rgba(176, 176, 176, 0.4);
+}
+
+/* Animação de brilho da plataforma */
+@keyframes pulseGlow {
+    from {
+        box-shadow: 0 0 20px rgba(176, 176, 176, 0.3);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(176, 176, 176, 0.6);
+    }
+}
+
+/* Ajustar caption para ficar melhor posicionado */
+.batmovel-display h5 {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--text-accent);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.batmovel-display .badge {
+    margin-top: 15px;
+    background: linear-gradient(45deg, rgba(176, 176, 176, 0.3), rgba(176, 176, 176, 0.5)) !important;
+    color: var(--text-accent);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid rgba(176, 176, 176, 0.4);
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(64, 64, 64, 0.8));
+    border: 3px solid var(--panel-border);
+    color: var(--text-light);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-btn:hover {
+    transform: scale(1.15);
+    background: linear-gradient(145deg, var(--text-accent), rgba(255, 255, 255, 0.9));
+    color: var(--primary-color);
+    border-color: var(--text-accent);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.carousel-btn:active {
+    transform: scale(1.05);
+}
+
+/* Lista de Batmóveis melhorada */
+.batmovel-list-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 2px solid #444;
+    border-radius: 12px;
+    padding: 15px;
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+/* Scrollbar customizada para lista */
+.batmovel-list-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.batmovel-list-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
+
+.batmovel-list-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(145deg, #666, #999);
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.batmovel-list-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(145deg, #888, #bbb);
+}
+
+.batmovel-list-item {
+    border-bottom: 2px solid #333;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.batmovel-list-item:last-child {
+    border-bottom: none;
+}
+
+.batmovel-list-item:hover {
+    background: rgba(64, 64, 64, 0.3);
+    border-radius: 8px;
+    padding: 15px 10px;
+}
+
+.batmovel-item-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.batmovel-thumb {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #444;
+    transition: all 0.3s ease;
+}
+
+.batmovel-thumb:hover {
+    border-color: var(--text-accent);
+    transform: scale(1.05);
+}
+
+.batmovel-info {
+    flex: 1;
+}
+
+.batmovel-info h6 {
+    margin: 0 0 5px 0;
+    color: var(--text-accent);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.batmovel-info small {
+    color: #aaa;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.batmovel-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.batmovel-actions .btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.batmovel-actions .btn:hover {
+    transform: scale(1.1);
+}
+
+/* Preview de imagem melhorado */
+.preview-container {
+    border: 3px dashed #444;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 26, 26, 0.5);
+    transition: all 0.3s ease;
+}
+
+.preview-container:hover {
+    border-color: var(--text-accent);
+    background: rgba(26, 26, 26, 0.7);
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.preview-placeholder {
+    color: #666;
+}
+
+.preview-placeholder i {
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Tabs customizadas melhoradas */
+.nav-tabs {
+    border-bottom: 2px solid #444;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-tabs .nav-link {
+    color: #aaa;
+    border-color: #444;
+    background-color: transparent;
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+    background: linear-gradient(145deg, var(--text-accent), rgba(255, 255, 255, 0.9));
+    border-color: var(--text-accent);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--text-accent);
+    border-color: #666;
+    transform: translateY(-1px);
+}
+
+/* Melhorar o modal body */
+.modal-body {
+    min-height: 650px;
+    background-image: url(../assets/img/Batmovel-background.PNG);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.modal-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.tab-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+/* Responsividade melhorada */
+@media (max-width: 992px) {
+    .batmovel-carousel-container {
+        min-height: 500px;
+        gap: 20px;
     }
     
-    .panel {
-        grid-column: 1 !important;
-        grid-row: auto !important;
+    .batmovel-display img {
+        max-height: 400px;
     }
     
-    .analise {
-        height: auto;
+    .carousel-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+    
+    .batmovel-display h5 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .batmovel-carousel-container {
+        flex-direction: column;
+        gap: 15px;
+        min-height: 450px;
+    }
+    
+    .carousel-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+    }
+    
+    .batmovel-display img {
+        max-height: 350px;
+    }
+    
+    .batmovel-display h5 {
+        font-size: 1.3rem;
+        margin-top: 25px;
+    }
+    
+    .batmovel-item-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .batmovel-actions {
+        justify-content: center;
+    }
+    
+    .batmovel-thumb {
+        width: 100px;
+        height: 70px;
+    }
+}
+
+/* Formulário de adicionar melhorado */
+#add-batmovel-form .form-control {
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid #444;
+    color: var(--text-light);
+    padding: 12px 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#add-batmovel-form .form-control:focus {
+    background: rgba(26, 26, 26, 0.9);
+    border-color: var(--text-accent);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    color: var(--text-accent);
+}
+
+#add-batmovel-form .form-label {
+    color: var(--text-accent);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+#add-batmovel-form .btn-primary {
+    background: linear-gradient(145deg, var(--text-accent), rgba(255, 255, 255, 0.9));
+    border: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+#add-batmovel-form .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Botões de exportar/importar */
+.btn-success, .btn-info {
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-success:hover, .btn-info:hover {
+    transform: translateY(-2px);
+}
+
+/* Botão de acesso ao modal */
+.batmovel-access .btn {
+    background: linear-gradient(145deg, rgba(26, 26, 26, 0.8), rgba(64, 64, 64, 0.6));
+    border: 2px solid var(--panel-border);
+    color: var(--text-accent);
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 12px 15px;
+}
+
+.batmovel-access .btn:hover {
+    background: linear-gradient(145deg, var(--text-accent), rgba(255, 255, 255, 0.9));
+    color: var(--primary-color);
+    border-color: var(--text-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+.modal-body .alert {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+}
+
+.alert-success {
+    background: linear-gradient(145deg, #28a745, #20c997);
+    color: white;
+}
+
+.alert-warning {
+    background: linear-gradient(145deg, #ffc107, #fd7e14);
+    color: #212529;
+}
+
+.alert-danger {
+    background: linear-gradient(145deg, #dc3545, #e74c3c);
+    color: white;
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.text-secondary {
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .preview-section {
+        margin-top: 20px;
     }
 }
