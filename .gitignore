@@ -1,0 +1,46 @@
+# Byte-compiled / cache / virtual envs
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+ENV/
+env/
+
+# VSCode
+.vscode/
+
+# Environment variables
+.env
+
+# Database
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Outros arquivos temporários
+*.log
+*.tmp
+
+# Arquivos de mídia grandes (opcional, remova se quiser versionar)
+*.mp4
+*.mp3
+*.wav
+*.avi
+*.mov
+*.webm
+*.ogg
+*.flac
+*.zip
+*.tar.gz
+*.rar
