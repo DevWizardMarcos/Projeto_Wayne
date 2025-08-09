@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/gotham.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/analise.css">
 </head>
 
 <body>
@@ -42,6 +44,8 @@
             <div class="status-item">
                 <label>Status 3</label>
                 <div class="progress-bar">
+                                                <source src="assets/video/gotham-3d.mp4" type="video/mp4">
+
                     <div class="progress" style="width: 70%"></div>
                 </div>
             </div>
@@ -55,6 +59,9 @@
 
         <div class="perfil panel">
             <h2>PERFIL</h2>
+            <button class="btn btn-secondary" id="abrirPerfilModal">
+                Analisar Vilões
+            </button>
             <div class="perfil-content">
             </div>
         </div>
@@ -100,9 +107,13 @@
         </div>
 
         <div class="analise panel">
-            <h2>ANÁLISE</h2>
-            <div class="analise-content">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h2>ANÁLISE</h2>
+                <button class="btn btn-outline-info btn-sm" id="abrirAnaliseModal">
+                    <i class="fas fa-search"></i> Ver Análise Completa
+                </button>
             </div>
+            <div class="analise-content"></div>
         </div>
     </div>
 
@@ -219,12 +230,61 @@
         </div>
     </div>
 
+    <!-- Modal de Perfil dos Vilões -->
+    <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="perfilModalLabel">
+                        <i class="fas fa-mask"></i> Vilões de Gotham - Pré-Análise
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="perfil-modal-body">
+                    <!-- Cards dos vilões serão inseridos aqui via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes da Ameaça -->
+    <div class="modal fade" id="ameacaModal" tabindex="-1" aria-labelledby="ameacaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ameacaModalLabel">Detalhes da Ameaça</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="ameaca-modal-body">
+                    <!-- Conteúdo dinâmico -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Análise Completa -->
+    <div class="modal fade" id="analiseModal" tabindex="-1" aria-labelledby="analiseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="analiseModalLabel">
+                        <i class="fas fa-search"></i> Análise Completa do Batcomputador
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="analise-modal-body">
+                    <!-- Conteúdo dinâmico será inserido aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/gotham.js"></script>
-
-    source
+    <script src="js/perfil.js"></script>
+    <script src="js/analise.js"></script>
 
     </body>
 

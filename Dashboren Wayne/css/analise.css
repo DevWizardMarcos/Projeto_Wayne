@@ -1,0 +1,27 @@
+.analise.panel {
+  background: rgba(18,18,22,0.98);
+  border-radius: 18px;
+  box-shadow: 0 16px 48px #000a, 0 0 24px #00f2ff22;
+  padding: 32px 24px 24px 24px;
+  margin-bottom: 32px;
+}
+.analise.panel h2 {
+  color: #7ed6ff;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #000, 0 0 8px #7ed6ff44;
+}
+.card.bg-dark {
+  border: 1.5px solid #2d2d44;
+}
+.progress-bar {
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+/* Destaque ao passar o mouse */
+.analise-content .col-md-6:hover {
+  box-shadow: 0 0 16px 2px #00f2ff55;
+  transform: scale(1.03);
+  transition: box-shadow 0.3s, transform 0.3s;
+  z-index: 2;
+}

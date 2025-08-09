@@ -11,7 +11,7 @@ function criarModalGotham() {
                 </div>
                 <div class="modal-body d-flex justify-content-center align-items-center" style="min-height:400px;">
                     <div class="gotham-3d-card" style="width:100%;height:100%;position:relative;">
-                        <img src="assets/img/gothamup.png" alt="Gotham City" class="gotham-img" style="width:100%;height:100%;position:absolute;top:0;left:0;">
+                        <img src="'assets/img/gothamup.png'" alt="Gotham City" class="gotham-img" style="width:100%;height:100%;position:absolute;top:0;left:0;">
                         <video class="gotham-video" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;display:none;border-radius:18px;z-index:2;" loop muted playsinline>
                             <source src="assets/video/gotham-3d.mp4" type="video/mp4">
                             Seu navegador não suporta vídeo.
@@ -60,7 +60,43 @@ function criarImagemGothamTrigger() {
     };
 }
 
+// Função para inserir o vídeo no modal quando ele for aberto
+function inserirVideoGothamNoModal() {
+    const modalBody = document.querySelector('#gothamModal .modal-body');
+    if (!modalBody) return;
+    modalBody.innerHTML = `
+        <div class="gotham-3d-card" style="width:100vw;height:calc(100vh - 120px);position:relative;max-width:100%;max-height:100%;">
+            <img src="assets/img/gothamup.png" alt="Gotham City" class="gotham-img" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;">
+            <video class="gotham-video" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;display:none;border-radius:18px;z-index:2;" loop muted playsinline>
+                <source src="assets/video/gotham-3d.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo.
+            </video>
+        </div>
+    `;
+
+    // Efeito hover para mostrar vídeo e esconder imagem
+    const card = modalBody.querySelector('.gotham-3d-card');
+    const img = card.querySelector('.gotham-img');
+    const video = card.querySelector('.gotham-video');
+    card.addEventListener('mouseenter', () => {
+        img.style.display = 'none';
+        video.style.display = 'block';
+        video.currentTime = 0;
+        video.play();
+    });
+    card.addEventListener('mouseleave', () => {
+        video.pause();
+        video.style.display = 'none';
+        img.style.display = 'block';
+    });
+}
+
+// Adiciona evento para inserir o vídeo sempre que o modal for aberto
 document.addEventListener('DOMContentLoaded', () => {
+    const gothamModal = document.getElementById('gothamModal');
+    if (gothamModal) {
+        gothamModal.addEventListener('show.bs.modal', inserirVideoGothamNoModal);
+    }
     criarModalGotham();
     criarImagemGothamTrigger();
 });
