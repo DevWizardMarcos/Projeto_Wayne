@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="BannersWayne/bannerWayne.PNG" alt="Banner Indústrias Wayne" width="100%">
+  <img src="assets/img/background-body.png" alt="Banner Indústrias Wayne" width="100%">
 </p>
 
 <h1 align="center"> I Am The Night — Wayne Industries Secure Access System</h1>
